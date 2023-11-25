@@ -10,6 +10,7 @@ import com.pknu.busannollerwar.presentation.home.HomeEvent
 import com.pknu.busannollerwar.presentation.home.HomeFragmentDirections
 import com.pknu.busannollerwar.presentation.util.BaseFragment
 import com.pknu.busannollerwar.presentation.util.repeatOnStarted
+import kotlinx.serialization.json.JsonNull.content
 
 class ContentsFragment : BaseFragment<FragmentContentsBinding, ContentsViewModel>(
     FragmentContentsBinding::inflate
@@ -24,7 +25,7 @@ class ContentsFragment : BaseFragment<FragmentContentsBinding, ContentsViewModel
     private fun setBinding() = binding.apply {
         val args : ContentsFragmentArgs by navArgs()
         val content = args.content
-        
+
         viewModel = fragmentViewModel.apply {
             viewLifecycleOwner.apply {
                 repeatOnStarted { eventFlow.collect { handleEvent(it) } }
